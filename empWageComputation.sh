@@ -3,6 +3,11 @@
 echo "Welcome to Employee Wage Computation Program"
 
 
+getWorkHours () {
+	totalWorkHours=$((8 * $attendedDays))
+	return $totalWorkHours
+}
+
 employeeType=$(($$%3))
 
 WAGEPERHOUR=20
@@ -28,15 +33,17 @@ case $employeeType in
 		;;
 esac
 
-echo "Enter total number of worked hours"
-read workedHours
-
 echo "Enter total number of days that employee attended"
 read attendedDays
 
+getWorkHours
+workHours=$?
+
 if [ $attendedDays -ge 20 ]; then
 	echo "Total wages for 20 days is "$((20 * $dailyWage))
-elif [ $workedHours -ge 100 ]; then
+elif [ $workHours -ge 100 ]; then
 	echo "Total wages for 100 hours is "$((100 * $WAGEPERHOUR))
+else
+	echo "Employee haven't meet criteria to get total wages"
 fi
 
