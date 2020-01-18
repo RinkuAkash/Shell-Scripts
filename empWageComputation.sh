@@ -27,3 +27,16 @@ case $employeeType in
 		exit 1
 		;;
 esac
+
+echo "Enter total number of worked hours"
+read workedHours
+
+echo "Enter total number of days that employee attended"
+read attendedDays
+
+if [ $attendedDays -ge 20 ]; then
+	echo "Total wages for 20 days is "$((20 * $dailyWage))
+elif [ $workedHours -ge 100 ]; then
+	echo "Total wages for 100 hours is "$((100 * $WAGEPERHOUR))
+fi
+
