@@ -52,5 +52,10 @@ fi
 
 touch Data.txt
 
-echo "${employeeType} - ${dailyWage} - ${totalWage}">>Data.txt
+currentDate=`date +%d-%m-%Y`
+echo "Date : ${currentDate}">>Data.txt
+echo "Employee Type : ${employeeType}">>Data.txt
+echo "Daily Wage : ${dailyWage}">>Data.txt
+echo "Total Wage : ${totalWage}">>Data.txt
 cat Data.txt
+rm Data.txt
