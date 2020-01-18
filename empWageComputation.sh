@@ -40,10 +40,17 @@ getWorkHours
 workHours=$?
 
 if [ $attendedDays -ge 20 ]; then
-	echo "Total wages for 20 days is "$((20 * $dailyWage))
+	totalWage=$(($attendedDays * $dailyWage))
+	echo "Total wages for 20 days is "$((20 * $dailyWage))" and total wage is "$totalWage
 elif [ $workHours -ge 100 ]; then
-	echo "Total wages for 100 hours is "$((100 * $WAGEPERHOUR))
+	totalWage=$(($workHours * $WAGEPERHOUR))
+	echo "Total wages for 100 hours is "$((100 * $WAGEPERHOUR))" and total wage is "$totalWage
 else
 	echo "Employee haven't meet criteria to get total wages"
+	exit 1
 fi
 
+touch Data.txt
+
+echo "${employeeType} - ${dailyWage} - ${totalWage}">>Data.txt
+cat Data.txt
